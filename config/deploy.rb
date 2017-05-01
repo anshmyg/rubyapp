@@ -13,8 +13,8 @@ set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,	      '/var/demo'
 set :puma_bind,       "unix://#{fetch(:deploy_to)}/shared/tmp/sockets/puma_#{fetch(:application)}.sock"
-set :puma_state,      "#{fetch(:deploy_to)}/tmp/pids/puma.state"
-set :puma_pid,        "#{fetch(:deploy_to)}/tmp/pids/puma.pid"
+set :puma_state,      "#{fetch(:deploy_to)}/shared/tmp/sockets/puma.state"
+set :puma_pid,        "#{fetch(:deploy_to)}/shared/tmp/puma.pid"
 set :puma_access_log, "#{fetch(:deploy_to)}/log/puma.error.log"
 set :puma_error_log,  "#{fetch(:deploy_to)}/log/puma.access.log"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
@@ -64,19 +64,9 @@ namespace :deploy do
     end
   end
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
-  end
 
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
 end
 
-# ps aux | grep puma    # Get puma pid
-# kill -s SIGUSR2 pid   # Restart puma
-# kill -s SIGTERM pid   # Stop puma
