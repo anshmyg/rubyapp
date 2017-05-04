@@ -13,7 +13,7 @@ Ansible-playbook installs:
 
 To run:
 
-    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,nginx
+    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,user,nginx
     $ <deploy this app with capistrano file from this repo>
     $ ansible-playbook -i hosts ruby-webapp.yml -t puma
 
