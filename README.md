@@ -1,5 +1,5 @@
 # Simple Rupy app with ansible-playbook and capistrano 
-This app just show your ip address and user agent.
+This app just shows your ip address and user agent.
 Playbook is located in the directory `ansible_pb`. 
 
 Ansible-playbook installs:
@@ -14,7 +14,7 @@ Ansible-playbook installs:
 To run:
 
     $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,nginx
-    $ <deploy your app>
+    $ <deploy this app with capistrano file from this repo>
     $ ansible-playbook -i hosts ruby-webapp.yml -t puma
 
 There is an example Capistrano `config/deploy.rb` in this repository that you can use for deployment.
