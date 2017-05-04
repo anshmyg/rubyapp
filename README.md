@@ -7,8 +7,8 @@ Ansible-playbook installs:
 - nginx
 - Puma (jungle)
 
-1. Change the app name, deploy directory and user for deploy in <code>ansible_pb/vars/defaults.yml</code>.
-2. Put correct ip in `ansible_pb/hosts`.
+1. Change the app name, deploy directory and user name for deploy in <code>ansible_pb/vars/defaults.yml</code>.
+2. Put correct ip address in `ansible_pb/hosts`.
 
 To run:
 
