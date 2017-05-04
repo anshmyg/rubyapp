@@ -1,0 +1,8 @@
+- include: ruby.yml 
+  tags: ruby
+- include: user.yml
+  tags: user
+- include: puma.yml
+  tags: puma
+- include: nginx.yml
+  tags: nginx

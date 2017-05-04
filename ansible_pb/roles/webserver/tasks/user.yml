@@ -1,0 +1,21 @@
+- name: Create deployment user
+  user: name={{ deploy_user }} comment="Application deployment user"
+
+- name: Create deployment directory
+  file: path={{deploy_directory}} owner=deploy group=deploy state=directory
+
+- name: Add directory for key
+  file: path=/home/deploy/.ssh/  owner=deploy group=deploy state=directory
+
+- name: Add pub.key for user
+  template: src=git_id_rsa.pub dest=/home/deploy/.ssh/id_rsa.pub group=deploy owner=deploy force=yes mode=0644
+
+- name: Add key for github
+  template: src=user_id_rsa dest=/home/deploy/.ssh/id_rsa group=deploy owner=deploy force=yes mode=0600
+
+- name: Add file for authorized_keys
+  template: src=user_authorized_keys dest=/home/deploy/.ssh/authorized_keys  owner=deploy group=deploy mode=0600
+
+- name: Add source rvm to bashrc
+  lineinfile: dest=/home/deploy/.bashrc state=present line="source /usr/local/rvm/scripts/rvm" 
+
