@@ -1,4 +1,4 @@
-server '54.244.69.20', port: 22, roles: [:web, :app, :db], primary: true
+server '54.187.186.197', port: 22, roles: [:web, :app, :db], primary: true
 
 set :user,            'deploy'
 
@@ -43,7 +43,6 @@ namespace :deploy do
         puts "WARNING: HEAD is not the same as origin/master"
         puts "Run `git push` to sync changes."
         exit
-      execute "rm -rf #{release_path}/ansible_pb"
       end
     end
   end
@@ -55,9 +54,16 @@ namespace :deploy do
       invoke 'deploy'
     end
   end
-
+  
+  desc 'Delete ansible dir' 
+  task :remove_ansible_dir do
+    on roles(:app) do
+      execute "rm -rf #{release_path}/ansible_pb"
+    end
+  end  
 
   before :starting,     :check_revision
+  after  :finishing,    :remove_ansible_dir
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
 end
