@@ -20,4 +20,4 @@ To run:
 There is an example Capistrano `config/deploy.rb` in this repository that you can use for deployment.
 Capistrano downloads ruby app from this repo and install it at your server. Don't foget to put correct ip address in `config/deploy.rb` and put ssh key on production server.
 
-This app was tested only on Ubuntu Server 14.04 LTS.
+This app was tested only on Ubuntu Server 14.04 LTS 64-bit.
