@@ -1,5 +1,5 @@
 # Simple Rupy app with ansible-playbook and capistrano 
-This app just shows your ip address and user agent.
+This web app just will show your ip address and user agent.
 Playbook is located in the directory `ansible_pb`. 
 
 Ansible-playbook installs:
