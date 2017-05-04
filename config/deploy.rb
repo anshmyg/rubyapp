@@ -1,7 +1,5 @@
-# Change these
 server '54.214.116.213', port: 22, roles: [:web, :app, :db], primary: true
 
-#set :repo_url,        'git://github.com/anshmyg/rubyapp'
 set :user,            'deploy'
 
 set :repo_url,        'git://github.com/anshmyg/rubyapp'
